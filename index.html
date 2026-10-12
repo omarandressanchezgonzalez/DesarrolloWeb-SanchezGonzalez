@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - Tarea 04</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabecera / Navbar -->
+    <header class="navbar">
+        <div class="logo">Logo</div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="#">Services</a>
+            <a href="contacts.html">Contacts</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <!-- Carrusel / Slide -->
+    <section class="slide-container">
+        <div class="slide-box">
+            <h1>SLIDE</h1>
+            <div class="slide-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recomendaciones -->
+    <section class="section-container">
+        <h2>Recomendaciones</h2>
+        <div class="grid-recomendaciones">
+            <div class="card">
+                <div class="img-placeholder"></div>
+                <p>Label</p>
+            </div>
+            <div class="card">
+                <div class="img-placeholder"></div>
+                <p>Label</p>
+            </div>
+            <div class="card">
+                <div class="img-placeholder"></div>
+                <p>Label</p>
+            </div>
+            <div class="card">
+                <div class="img-placeholder"></div>
+                <p>Label</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias -->
+    <section class="section-container">
+        <h2>Noticias</h2>
+        
+        <div class="noticia-row">
+            <div class="img-placeholder block-img"></div>
+            <div class="noticia-text">
+                <h3>Heading</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+
+        <div class="noticia-row reverse">
+            <div class="img-placeholder block-img"></div>
+            <div class="noticia-text">
+                <h3>Heading</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+
+        <div class="noticia-row">
+            <div class="img-placeholder block-img"></div>
+            <div class="noticia-text">
+                <h3>Heading</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario -->
+    <section class="section-container form-section">
+        <h2>Formulario</h2>
+        <form id="registroForm" class="form-box">
+            <input type="text" id="nombre" placeholder="Ingresar Nombre" required>
+            <input type="email" id="correo" placeholder="Ingresar Correo" required>
+            <input type="tel" id="celular" placeholder="Ingresar Celular" required>
+            <button type="submit" id="btnEnviar">Enviar</button>
+        </form>
+        <div id="mensaje" class="mensaje-alerta"></div>
+    </section>
+
+    <!-- Pie de página / Footer -->
+    <footer>
+        <div class="social-icons">
+            <span class="icon">RS1</span>
+            <span class="icon">RS2</span>
+            <span class="icon">RS3</span>
+        </div>
+        <p class="student-name">TU NOMBRE COMPLETO</p>
+    </footer>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nombreInput = document.getElementById('nombre');
+            const correoInput = document.getElementById('correo');
+            const celularInput = document.getElementById('celular');
+            const mensaje = document.getElementById('mensaje');
+
+            // 1. Preparar el objeto con la estructura exacta de la guía
+            const datos = {
+                nombre: nombreInput.value,
+                correo: correoInput.value,
+                celular: celularInput.value
+            };
+
+            // 2. Guardar de manera acumulativa en LocalStorage
+            // Leemos lo que ya existe, si está vacío creamos un arreglo nuevo
+            let listaContactos = JSON.parse(localStorage.getItem('contactos')) || [];
+            listaContactos.push(datos); // Añadimos el nuevo registro
+            localStorage.setItem('contactos', JSON.stringify(listaContactos)); // Guardamos de vuelta
+
+            // 3. Petición Fetch al servidor externo (Código de la guía)
+            fetch('http://167.71.101.78/senati/fpw/reserva.php', {
+                method: "POST",
+                body: JSON.stringify(datos),
+                headers: {"Content-type": "application/json; charset=UTF-8"}
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if(data.status === 200) {
+                    mensaje.innerHTML = "SE REGISTRÓ SATISFACTORIAMENTE";
+                    mensaje.style.color = "green";
+                } else {
+                    mensaje.innerHTML = "Error: " + data.message;
+                    mensaje.style.color = "red";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                // Si el servidor falla o está fuera de línea, dejamos el aviso amigable
+                mensaje.innerHTML = "REGISTRO GUARDADO EN LOCALSTORAGE (Error de red con el servidor)";
+                mensaje.style.color = "orange";
+            });
+
+            // Limpiar formulario después del envío
+            this.reset();
+        });
+    </script>
+</body>
+</html>

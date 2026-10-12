@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Tarea 04</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabecera / Navbar -->
+    <header class="navbar">
+        <div class="logo">Logo</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Services</a>
+            <a href="contacts.html" class="active">Contacts</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <!-- Sección Tabla de Contactos -->
+    <section class="section-container table-section">
+        <h2>Contactos</h2>
+        <div class="table-responsive">
+            <table class="tabla-datos" id="tablaContactos">
+                <thead>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>CORREO</th>
+                        <th>CELULAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se generarán dinámicamente con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pie de página / Footer -->
+    <footer>
+        <div class="social-icons">
+            <span class="icon">RS1</span>
+            <span class="icon">RS2</span>
+            <span class="icon">RS3</span>
+        </div>
+        <p class="student-name">TU NOMBRE COMPLETO</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tbody = document.querySelector('#tablaContactos tbody');
+            
+            // Obtener los datos almacenados en localStorage
+            const listaContactos = JSON.parse(localStorage.getItem('contactos')) || [];
+
+            // Si no hay datos, mostrar una fila indicándolo
+            if (listaContactos.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;">No hay registros en el LocalStorage.</td></tr>`;
+                return;
+            }
+
+            // Recorrer el arreglo y construir cada fila de la tabla
+            listaContactos.forEach(contacto => {
+                const fila = document.createElement('tr');
+                
+                fila.innerHTML = `
+                    <td>${contacto.nombre}</td>
+                    <td>${contacto.correo}</td>
+                    <td>${contacto.celular}</td>
+                `;
+                
+                tbody.appendChild(fila);
+            });
+        });
+    </script>
+</body>
+</html>
