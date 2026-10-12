@@ -3,158 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal - Tarea 04</title>
+    <title>Myke Towers - Sitio Oficial</title>
+    <!-- Favicon: Puedes usar una foto pequeña del logo de Myke Towers -->
+    <link rel="icon" type="image/png" href="imagenes/slider1.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabecera / Navbar -->
-    <header class="navbar">
-        <div class="logo">Logo</div>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="#">Services</a>
-            <a href="contacts.html">Contacts</a>
-            <a href="#">Login</a>
-        </nav>
-    </header>
-
-    <!-- Carrusel / Slide -->
-    <section class="slide-container">
-        <div class="slide-box">
-            <h1>SLIDE</h1>
-            <div class="slide-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recomendaciones -->
-    <section class="section-container">
-        <h2>Recomendaciones</h2>
-        <div class="grid-recomendaciones">
-            <div class="card">
-                <div class="img-placeholder"></div>
-                <p>Label</p>
-            </div>
-            <div class="card">
-                <div class="img-placeholder"></div>
-                <p>Label</p>
-            </div>
-            <div class="card">
-                <div class="img-placeholder"></div>
-                <p>Label</p>
-            </div>
-            <div class="card">
-                <div class="img-placeholder"></div>
-                <p>Label</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Noticias -->
-    <section class="section-container">
-        <h2>Noticias</h2>
+    <main class="main-container">
         
-        <div class="noticia-row">
-            <div class="img-placeholder block-img"></div>
-            <div class="noticia-text">
-                <h3>Heading</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <!-- Cabecera -->
+        <header class="site-header">
+            <div class="brand">
+                <div class="logo-box">MT</div>
+                <h1>Myke Towers Music</h1>
             </div>
-        </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-item">Inicio</a>
+                <a href="#" class="nav-item">Álbumes</a>
+                <a href="#" class="nav-item">Gira</a>
+                <a href="#" class="nav-item">Contacto</a>
+            </nav>
+        </header>
 
-        <div class="noticia-row reverse">
-            <div class="img-placeholder block-img"></div>
-            <div class="noticia-text">
-                <h3>Heading</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <!-- Slider Interactivo -->
+        <section class="slider-section">
+            <div class="slider-wrapper" id="sliderContainer">
+                <div class="slide">
+                    <h2 id="sliderTitle">Últimos Lanzamientos</h2>
+                </div>
             </div>
-        </div>
-
-        <div class="noticia-row">
-            <div class="img-placeholder block-img"></div>
-            <div class="noticia-text">
-                <h3>Heading</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="slider-pagination">
+                <span class="dot active" onclick="cambiarSlide(0, this)"></span>
+                <span class="dot" onclick="cambiarSlide(1, this)"></span>
+                <span class="dot" onclick="cambiarSlide(2, this)"></span>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Formulario -->
-    <section class="section-container form-section">
-        <h2>Formulario</h2>
-        <form id="registroForm" class="form-box">
-            <input type="text" id="nombre" placeholder="Ingresar Nombre" required>
-            <input type="email" id="correo" placeholder="Ingresar Correo" required>
-            <input type="tel" id="celular" placeholder="Ingresar Celular" required>
-            <button type="submit" id="btnEnviar">Enviar</button>
-        </form>
-        <div id="mensaje" class="mensaje-alerta"></div>
-    </section>
+        <!-- Contenido en dos columnas -->
+        <section class="content-columns">
+            <!-- Columna 1: Video de YouTube de Myke Towers -->
+            <div class="column video-column">
+                <div class="video-responsive">
+                    <!-- Usamos el código de inserción del tema "LALA" -->
+                    <iframe 
+                        src="https://youtube.com" 
+                        title="Myke Towers - LALA (Video Oficial)" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Columna 2: Descripción del Artista -->
+            <div class="column text-column">
+                <h2>El Líder del Movimiento Urbano</h2>
+                <p>Michael Anthony Torres Monge, conocido artísticamente como Myke Towers, es un rapero, cantante y compositor puertorriqueño. Se ha consolidado como uno de los pilares del género urbano internacional gracias a su inigualable estilo para el fraseo y la composición de éxitos globales.</p>
+                <p>Desde sus inicios en la plataforma SoundCloud hasta llenar estadios mundiales, ha colaborado con los nombres más grandes de la industria musical, logrando posicionar múltiples sencillos en la cima de las listas de popularidad como Billboard y Spotify.</p>
+            </div>
+        </section>
 
-    <!-- Pie de página / Footer -->
-    <footer>
-        <div class="social-icons">
-            <span class="icon">RS1</span>
-            <span class="icon">RS2</span>
-            <span class="icon">RS3</span>
-        </div>
-        <p class="student-name">TU NOMBRE COMPLETO</p>
-    </footer>
+        <!-- Sección Inferior -->
+        <section class="lower-section">
+            <aside class="ads-box">
+                <p>PUBLICIDAD: Merch Oficial Disponible</p>
+            </aside>
 
+            <!-- Formulario de Registro -->
+            <div class="form-container">
+                <h3>Regístrate para el Club de Fans</h3>
+                <form id="registerForm">
+                    <input type="text" id="nombre" placeholder="Nombre completo" required>
+                    <input type="email" id="correo" placeholder="Correo electrónico" required>
+                    <input type="tel" id="telefono" placeholder="Teléfono" required>
+                    <button type="submit">UNIRSE AHORA</button>
+                </form>
+                <div id="formFeedback"></div>
+            </div>
+        </section>
+
+        <!-- Pie de página -->
+        <footer class="site-footer">
+            <div class="footer-copyright">
+                <p>&copy; 2026 Omar Andres Sanchez Gonzalez</p>
+                <p>Contacto: <a href="mailto:fans@myketowersmusic.com">fans@myketowersmusic.com</a></p>
+                <p class="hosting-text">Examen Final - Desarrollo Web</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://instagram.com" target="_blank" class="social-icon">in</a>
+                <a href="https://facebook.com" target="_blank" class="social-icon">f</a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">t</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript para el control del Slider Local y LocalStorage -->
     <script>
-        document.getElementById('registroForm').addEventListener('submit', function(e) {
+        // Apunta directamente a tus imágenes locales guardadas en la carpeta
+        const imagenesSlider = [
+            'imagenes/slider1.jpg',
+            'imagenes/slider2.jpg',
+            'imagenes/slider3.jpg'
+        ];
+
+        const titulosSlider = [
+            'Álbum: LVEU: Vive La Tuya',
+            'En el Estudio de Grabación',
+            'Gira Mundial Oficial'
+        ];
+
+        const sliderContainer = document.getElementById('sliderContainer');
+        const sliderTitle = document.getElementById('sliderTitle');
+
+        // Configuración inicial del primer slide
+        sliderContainer.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${imagenesSlider[0]}')`;
+
+        function cambiarSlide(index, elementoDot) {
+            // Cambia el fondo usando tu imagen local
+            sliderContainer.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${imagenesSlider[index]}')`;
+            // Cambia el texto del banner
+            sliderTitle.textContent = titulosSlider[index];
+            
+            // Cambia el estado del punto seleccionado
+            document.querySelectorAll('.slider-pagination .dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+            elementoDot.classList.add('active');
+        }
+
+        // Lógica del Formulario
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            const nombreInput = document.getElementById('nombre');
-            const correoInput = document.getElementById('correo');
-            const celularInput = document.getElementById('celular');
-            const mensaje = document.getElementById('mensaje');
-
-            // 1. Preparar el objeto con la estructura exacta de la guía
-            const datos = {
-                nombre: nombreInput.value,
-                correo: correoInput.value,
-                celular: celularInput.value
+            
+            const suscriptor = {
+                nombre: document.getElementById('nombre').value,
+                correo: document.getElementById('correo').value,
+                telefono: document.getElementById('telefono').value,
+                artista: "Myke Towers"
             };
 
-            // 2. Guardar de manera acumulativa en LocalStorage
-            // Leemos lo que ya existe, si está vacío creamos un arreglo nuevo
-            let listaContactos = JSON.parse(localStorage.getItem('contactos')) || [];
-            listaContactos.push(datos); // Añadimos el nuevo registro
-            localStorage.setItem('contactos', JSON.stringify(listaContactos)); // Guardamos de vuelta
+            let registros = JSON.parse(localStorage.getItem('fansMykeTowers')) || [];
+            registros.push(suscriptor);
+            localStorage.setItem('fansMykeTowers', JSON.stringify(registros));
 
-            // 3. Petición Fetch al servidor externo (Código de la guía)
-            fetch('http://167.71.101.78/senati/fpw/reserva.php', {
-                method: "POST",
-                body: JSON.stringify(datos),
-                headers: {"Content-type": "application/json; charset=UTF-8"}
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if(data.status === 200) {
-                    mensaje.innerHTML = "SE REGISTRÓ SATISFACTORIAMENTE";
-                    mensaje.style.color = "green";
-                } else {
-                    mensaje.innerHTML = "Error: " + data.message;
-                    mensaje.style.color = "red";
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                // Si el servidor falla o está fuera de línea, dejamos el aviso amigable
-                mensaje.innerHTML = "REGISTRO GUARDADO EN LOCALSTORAGE (Error de red con el servidor)";
-                mensaje.style.color = "orange";
-            });
+            const feedback = document.getElementById('formFeedback');
+            feedback.innerHTML = "¡Te has registrado correctamente al club de fans!";
+            feedback.style.color = "#1db954"; /* Verde estilo Spotify */
+            feedback.style.marginTop = "10px";
 
-            // Limpiar formulario después del envío
             this.reset();
         });
     </script>
 </body>
 </html>
+
